@@ -79,3 +79,27 @@ label {
   display: flex;
   flex-direction: column;
 }
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 20px;
+  font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3px;
+
+  dl {
+    margin: 0;
+
+    dt {
+      font-weight: 500;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+}

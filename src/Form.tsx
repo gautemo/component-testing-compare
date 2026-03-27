@@ -1,40 +1,39 @@
 import { CarOutlined, CheckSquareOutlined, FormOutlined, UserOutlined } from '@ant-design/icons'
 import { Steps } from 'antd'
 import { Customer } from './Customer'
-import { useState } from 'react'
+import { useStoreSnap } from './formState'
 
 export function Form() {
-  const [step, setStep] = useState(0)
+  const snap = useStoreSnap()
   return (
     <div className="container">
       <Steps
         orientation="vertical"
-        size="default"
-        current={step}
+        current={snap.step}
         items={[
           {
             title: 'Customer',
             icon: <UserOutlined />,
-            style: { height: 70 },
+            style: { height: 60 },
           },
           {
             title: 'Vehicle',
             icon: <CarOutlined />,
-            style: { height: 70 },
+            style: { height: 60 },
           },
           {
             title: 'Insurance',
             icon: <FormOutlined />,
-            style: { height: 70 },
+            style: { height: 60 },
           },
           {
             title: 'Summary',
             icon: <CheckSquareOutlined />,
-            style: { height: 70 },
+            style: { height: 60 },
           },
         ]}
       />
-      {step === 0 && <Customer />}
+      {snap.step === 0 && <Customer />}
     </div>
   )
 }
