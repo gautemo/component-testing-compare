@@ -1,12 +1,16 @@
 import { proxy, subscribe, useSnapshot } from 'valtio'
-import { validateCustomer } from './formValidation'
+import { validateCustomer, validateVehicle } from './formValidation'
 
 const store = proxy({
-  step: 0,
+  step: 1,
   customer: {
     ssn: { value: '', displayValidation: false },
     phonenumber: { value: '', displayValidation: false },
     email: { value: '', displayValidation: false },
+  },
+  vehicle: {
+    registrationNumber: { value: '', displayValidation: false },
+    mileage: { value: null as number | null, displayValidation: false },
   },
 })
 
@@ -34,6 +38,18 @@ export function setCustomerEmail(options: { value?: string; displayValidation?: 
   }
 }
 
+export function setVehicleRegistrationNumber(value: string) {
+  store.vehicle.registrationNumber = { value, displayValidation: true }
+}
+export function setVehicleMileage(options: { value?: number | null; displayValidation?: true }) {
+  if (options.value !== undefined) {
+    store.vehicle.mileage.value = options.value
+  }
+  if (options.displayValidation) {
+    store.vehicle.mileage.displayValidation = true
+  }
+}
+
 export function nextStep() {
   if (
     store.step === 0 &&
@@ -46,6 +62,17 @@ export function nextStep() {
     store.customer.ssn.displayValidation = true
     store.customer.phonenumber.displayValidation = true
     store.customer.email.displayValidation = true
+    return
+  }
+  if (
+    store.step === 1 &&
+    !validateVehicle({
+      reg: store.vehicle.registrationNumber.value,
+      mileage: store.vehicle.mileage.value,
+    })
+  ) {
+    store.vehicle.registrationNumber.displayValidation = true
+    store.vehicle.mileage.displayValidation = true
     return
   }
   store.step++

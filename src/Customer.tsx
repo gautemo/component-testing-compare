@@ -1,5 +1,4 @@
-import { MailOutlined, PhoneOutlined } from '@ant-design/icons'
-import { Button, Input, InputNumber } from 'antd'
+import { Button } from 'antd'
 import { CustomerSearch } from './fields/CustomerSearch'
 import { nextStep } from './formState'
 import { CustomerEmail } from './fields/CustomerEmail'

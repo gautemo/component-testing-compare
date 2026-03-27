@@ -1,5 +1,29 @@
 export function validateCustomer(values: { ssn: string; phonenumber: string; email: string }) {
-  return validateSsn(values.ssn).success
+  return (
+    validateSsn(values.ssn).success &&
+    validatePhonenumber(values.phonenumber) &&
+    validateEmail(values.email)
+  )
+}
+
+export function validateVehicle(values: { reg: string; mileage: number | null }) {
+  return validateRegistrationNumber(values.reg).success && validateMileage(values.mileage).success
+}
+
+export function validateRegistrationNumber(value: string) {
+  const valid = /^[A-Z]{2}\d{4,5}$/i.test(value)
+  return {
+    success: valid,
+    errorMessage: value.length === 0 ? 'Required' : !valid ? 'Invalid format' : undefined,
+  }
+}
+
+export function validateMileage(value: number | null) {
+  const valid = value !== null && value >= 0
+  return {
+    success: valid,
+    errorMessage: !valid ? 'Required' : undefined,
+  }
 }
 
 export function validateSsn(value: string) {

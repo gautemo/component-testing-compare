@@ -10,7 +10,7 @@ export function CustomerSearch() {
   const validation = validateSsn(snap.customer.ssn.value)
   const query = useQuery({
     queryKey: ['customer', snap.customer.ssn.value],
-    async queryFn(): Promise<{ name: string; phonenumber: string; email: string }> {
+    async queryFn(): Promise<{ name: string; age: number; phonenumber: string; email: string }> {
       const response = await fetch(`http://localhost:3000/customer/${snap.customer.ssn.value}`)
       return response.json()
     },
@@ -41,9 +41,9 @@ export function CustomerSearch() {
           />
           <dl>
             <dt>Name:</dt>
-            <dd>Alex Good</dd>
+            <dd>{query.data.name}</dd>
             <dt>Age:</dt>
-            <dd>30</dd>
+            <dd>{query.data.age}</dd>
           </dl>
         </div>
       )}

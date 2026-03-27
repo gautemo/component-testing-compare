@@ -10,9 +10,17 @@ const app = new H3({
 
 app.get('/customer/:ssn', () => {
   return {
-    name: 'Clark Kent',
+    name: 'Alex Good',
+    age: 30,
     phonenumber: '98765432',
     email: 'test@example.com',
+  }
+})
+
+app.get('/vehicle/:registrationNumber', () => {
+  return {
+    description: 'Skoda Enyaq 85X',
+    year: 2024,
   }
 })
 
