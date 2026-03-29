@@ -37,6 +37,7 @@ export function Summary() {
   return (
     <div className="summary">
       <h2>Thank you for the purchase</h2>
+      <h3>Customer</h3>
       <div className="card">
         <img
           src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${snap.customer.ssn.value}`}
@@ -55,6 +56,7 @@ export function Summary() {
           <dd>{snap.customer.email.value}</dd>
         </dl>
       </div>
+      <h3>Vehicle</h3>
       <div className="card">
         <CarTwoTone style={{ fontSize: 48 }} />
         <dl>
@@ -68,6 +70,7 @@ export function Summary() {
           <dd>{snap.vehicle.mileage.value}</dd>
         </dl>
       </div>
+      <h3>Insurance</h3>
       <div className="card">
         <SafetyOutlined style={{ fontSize: 48 }} />
         <dl>
