@@ -15,7 +15,7 @@ export function CustomerPhonenumber() {
           onChange={(value) => setCustomerPhonenumber({ value: value?.toString() ?? '' })}
           onBlur={() => setCustomerPhonenumber({ displayValidation: true })}
           prefix={<PhoneOutlined />}
-          style={{ width: 300 }}
+          style={{ width: 'auto' }}
         />
       </label>
       {snap.customer.phonenumber.displayValidation && !validation.success && (

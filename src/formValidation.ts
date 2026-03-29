@@ -49,6 +49,27 @@ export function validatePhonenumber(value: string) {
   }
 }
 
+export function validateInsurance(values: { mileage: number | null; coverageId: string | null }) {
+  return (
+    validateYearlyDrivingLength(values.mileage).success &&
+    validateInsuranceCoverage(values.coverageId).success
+  )
+}
+
+export function validateYearlyDrivingLength(value: number | null) {
+  return {
+    success: !!value,
+    errorMessage: !value ? 'Required' : undefined,
+  }
+}
+
+export function validateInsuranceCoverage(value: string | null) {
+  return {
+    success: !!value,
+    errorMessage: !value ? 'Required' : undefined,
+  }
+}
+
 export function validateEmail(value: string) {
   const valid =
     /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_'+\-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/i.test(

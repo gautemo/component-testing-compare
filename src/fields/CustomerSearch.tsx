@@ -21,12 +21,7 @@ export function CustomerSearch() {
     <div>
       <label>
         <span>Social security number</span>
-        <Search
-          onSearch={setCustomerSsn}
-          width={500}
-          prefix={<UserOutlined />}
-          style={{ width: 300 }}
-        />
+        <Search onSearch={setCustomerSsn} width={500} prefix={<UserOutlined />} />
       </label>
       {snap.customer.ssn.displayValidation && !validation.success && (
         <Alert title={validation.errorMessage} type="warning" showIcon />

@@ -23,11 +23,7 @@ export function VehicleSearch() {
     <div>
       <label>
         <span>Registration number</span>
-        <Search
-          onSearch={setVehicleRegistrationNumber}
-          prefix={<CarOutlined />}
-          style={{ width: 300 }}
-        />
+        <Search onSearch={setVehicleRegistrationNumber} prefix={<CarOutlined />} />
       </label>
       {snap.vehicle.registrationNumber.displayValidation && !validation.success && (
         <Alert title={validation.errorMessage} type="warning" showIcon />

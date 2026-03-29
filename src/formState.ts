@@ -1,8 +1,8 @@
-import { proxy, subscribe, useSnapshot } from 'valtio'
-import { validateCustomer, validateVehicle } from './formValidation'
+import { proxy, useSnapshot } from 'valtio'
+import { validateCustomer, validateInsurance, validateVehicle } from './formValidation'
 
 const store = proxy({
-  step: 1,
+  step: 2,
   customer: {
     ssn: { value: '', displayValidation: false },
     phonenumber: { value: '', displayValidation: false },
@@ -11,6 +11,11 @@ const store = proxy({
   vehicle: {
     registrationNumber: { value: '', displayValidation: false },
     mileage: { value: null as number | null, displayValidation: false },
+  },
+  insurance: {
+    yearlyDrivingLength: null as number | null,
+    coverageId: '',
+    displayValidation: false,
   },
 })
 
@@ -50,6 +55,13 @@ export function setVehicleMileage(options: { value?: number | null; displayValid
   }
 }
 
+export function setInsuranceMileage(value: number) {
+  store.insurance.yearlyDrivingLength = value
+}
+export function setInsuranceCoverage(id: string) {
+  store.insurance.coverageId = id
+}
+
 export function nextStep() {
   if (
     store.step === 0 &&
@@ -75,7 +87,15 @@ export function nextStep() {
     store.vehicle.mileage.displayValidation = true
     return
   }
+  if (
+    store.step === 2 &&
+    !validateInsurance({
+      mileage: store.insurance.yearlyDrivingLength,
+      coverageId: store.insurance.coverageId,
+    })
+  ) {
+    store.insurance.displayValidation = true
+    return
+  }
   store.step++
 }
-
-subscribe(store, () => console.log('state has changed to', store))

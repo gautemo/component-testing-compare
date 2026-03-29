@@ -1,6 +1,7 @@
 import { CarOutlined, CheckSquareOutlined, FormOutlined, UserOutlined } from '@ant-design/icons'
 import { Steps } from 'antd'
 import { Customer } from './Customer'
+import { Insurance } from './Insurance'
 import { Vehicle } from './Vehicle'
 import { useStoreSnap } from './formState'
 
@@ -36,6 +37,7 @@ export function Form() {
       />
       {snap.step === 0 && <Customer />}
       {snap.step === 1 && <Vehicle />}
+      {snap.step === 2 && <Insurance />}
     </div>
   )
 }

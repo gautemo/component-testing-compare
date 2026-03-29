@@ -16,7 +16,7 @@ export function VehicleMileage() {
           onChange={(value: number | null) => setVehicleMileage({ value })}
           onBlur={() => setVehicleMileage({ displayValidation: true })}
           suffix="km"
-          style={{ width: 300 }}
+          style={{ width: 'auto' }}
         />
       </label>
       {snap.vehicle.mileage.displayValidation && !validation.success && (

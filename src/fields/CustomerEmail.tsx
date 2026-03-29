@@ -13,7 +13,6 @@ export function CustomerEmail() {
         <Input
           onChange={(e) => setCustomerEmail({ value: e.target.value })}
           onBlur={() => setCustomerEmail({ displayValidation: true })}
-          style={{ width: 300 }}
           prefix={<MailOutlined />}
         />
       </label>
