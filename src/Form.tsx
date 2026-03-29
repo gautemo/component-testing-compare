@@ -4,6 +4,7 @@ import { Customer } from './Customer'
 import { Insurance } from './Insurance'
 import { Vehicle } from './Vehicle'
 import { useStoreSnap } from './formState'
+import { Summary } from './Summary'
 
 export function Form() {
   const snap = useStoreSnap()
@@ -38,6 +39,7 @@ export function Form() {
       {snap.step === 0 && <Customer />}
       {snap.step === 1 && <Vehicle />}
       {snap.step === 2 && <Insurance />}
+      {snap.step === 3 && <Summary />}
     </div>
   )
 }

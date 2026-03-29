@@ -2,7 +2,7 @@ import { proxy, useSnapshot } from 'valtio'
 import { validateCustomer, validateInsurance, validateVehicle } from './formValidation'
 
 const store = proxy({
-  step: 2,
+  step: 0,
   customer: {
     ssn: { value: '', displayValidation: false },
     phonenumber: { value: '', displayValidation: false },

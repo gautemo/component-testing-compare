@@ -61,6 +61,11 @@ app.post('/coverages', async () => {
   ]
 })
 
+app.post('/insurance', async () => {
+  await sleep(2_000)
+  return true
+})
+
 app.head('/', () => 'server ready')
 
 serve(app, { port: 3000 })

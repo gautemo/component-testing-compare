@@ -11,6 +11,7 @@ export function CustomerEmail() {
       <label>
         <span>Email</span>
         <Input
+          value={snap.customer.email.value}
           onChange={(e) => setCustomerEmail({ value: e.target.value })}
           onBlur={() => setCustomerEmail({ displayValidation: true })}
           prefix={<MailOutlined />}

@@ -1,21 +1,31 @@
 import { UserOutlined } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
-import { useQuery } from '@tanstack/react-query'
-import { setCustomerSsn, useStoreSnap } from '../formState'
-import { Alert } from 'antd'
+import {
+  setCustomerEmail,
+  setCustomerPhonenumber,
+  setCustomerSsn,
+  useStoreSnap,
+} from '../formState'
+import { Alert, Spin } from 'antd'
 import { validateSsn } from '../formValidation'
+import { useCustomerQuery } from '../hooks/useCustomerQuery'
+import { useEffect } from 'react'
 
 export function CustomerSearch() {
   const snap = useStoreSnap()
   const validation = validateSsn(snap.customer.ssn.value)
-  const query = useQuery({
-    queryKey: ['customer', snap.customer.ssn.value],
-    async queryFn(): Promise<{ name: string; age: number; phonenumber: string; email: string }> {
-      const response = await fetch(`http://localhost:3000/customer/${snap.customer.ssn.value}`)
-      return response.json()
-    },
-    enabled: validation.success,
-  })
+  const query = useCustomerQuery(snap.customer.ssn.value, validation.success)
+
+  useEffect(() => {
+    if (query.isSuccess) {
+      if (!snap.customer.phonenumber.value) {
+        setCustomerPhonenumber({ value: query.data.phonenumber })
+      }
+      if (!snap.customer.email.value) {
+        setCustomerEmail({ value: query.data.email })
+      }
+    }
+  }, [query.isSuccess])
 
   return (
     <div>
@@ -26,6 +36,10 @@ export function CustomerSearch() {
       {snap.customer.ssn.displayValidation && !validation.success && (
         <Alert title={validation.errorMessage} type="warning" showIcon />
       )}
+      {query.isPending && validation.success && (
+        <Spin description="Finding customer data" size="small" />
+      )}
+      {query.isError && <Alert title="Could not find customer" type="warning" />}
       {query.isSuccess && (
         <div className="card">
           <img

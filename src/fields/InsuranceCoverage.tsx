@@ -1,7 +1,7 @@
 import { Alert, Card, Radio, Spin } from 'antd'
 import { setInsuranceCoverage, useStoreSnap } from '../formState'
 import { validateInsuranceCoverage } from '../formValidation'
-import { useCoveragesQuery } from '../useCoveragesQuery'
+import { useCoveragesQuery } from '../hooks/useCoveragesQuery'
 
 export function InsuranceCoverage() {
   const snap = useStoreSnap()
@@ -10,7 +10,7 @@ export function InsuranceCoverage() {
 
   return (
     <div>
-      <span className="radio-group-header">Coverage</span>
+      <p className="radio-group-header">Coverage</p>
       {!query.isEnabled && (
         <Alert title="Select yearly driving length to calculate prices" type="info" />
       )}
@@ -19,7 +19,7 @@ export function InsuranceCoverage() {
       {query.isSuccess && (
         <Radio.Group
           onChange={(e) => setInsuranceCoverage(e.target.value)}
-          style={{ display: 'flex', flexDirection: 'column', gap: 8 }}
+          style={{ display: 'flex', flexDirection: 'column', gap: 4 }}
         >
           {query.data.map((coverage) => (
             <Card

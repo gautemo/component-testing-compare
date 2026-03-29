@@ -1,23 +1,14 @@
 import { CarOutlined, CarTwoTone } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
-import { useQuery } from '@tanstack/react-query'
 import { setVehicleRegistrationNumber, useStoreSnap } from '../formState'
-import { Alert } from 'antd'
+import { Alert, Spin } from 'antd'
 import { validateRegistrationNumber } from '../formValidation'
+import { useVehicleQuery } from '../hooks/useVehicleQuery'
 
 export function VehicleSearch() {
   const snap = useStoreSnap()
   const validation = validateRegistrationNumber(snap.vehicle.registrationNumber.value)
-  const query = useQuery({
-    queryKey: ['vehicle', snap.vehicle.registrationNumber.value],
-    async queryFn(): Promise<{ description: string; year: number }> {
-      const response = await fetch(
-        `http://localhost:3000/vehicle/${snap.vehicle.registrationNumber.value}`,
-      )
-      return response.json()
-    },
-    enabled: validation.success,
-  })
+  const query = useVehicleQuery(snap.vehicle.registrationNumber.value, validation.success)
 
   return (
     <div>
@@ -28,6 +19,10 @@ export function VehicleSearch() {
       {snap.vehicle.registrationNumber.displayValidation && !validation.success && (
         <Alert title={validation.errorMessage} type="warning" showIcon />
       )}
+      {query.isPending && validation.success && (
+        <Spin description="Finding vehicle data" size="small" />
+      )}
+      {query.isError && <Alert title="Could not find vehicle" type="warning" />}
       {query.isSuccess && (
         <div className="card">
           <CarTwoTone style={{ fontSize: 48 }} />

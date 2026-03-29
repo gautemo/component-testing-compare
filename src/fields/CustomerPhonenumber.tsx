@@ -11,6 +11,7 @@ export function CustomerPhonenumber() {
       <label>
         <span>Phone number</span>
         <InputNumber
+          value={snap.customer.phonenumber.value}
           controls={false}
           onChange={(value) => setCustomerPhonenumber({ value: value?.toString() ?? '' })}
           onBlur={() => setCustomerPhonenumber({ displayValidation: true })}
