@@ -67,7 +67,7 @@ export function nextStep() {
   if (
     store.step === 1 &&
     !validateVehicle({
-      reg: store.vehicle.registrationNumber.value,
+      registrationNumber: store.vehicle.registrationNumber.value,
       mileage: store.vehicle.mileage.value,
     })
   ) {

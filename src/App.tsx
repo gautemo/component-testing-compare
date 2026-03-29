@@ -1,14 +1,6 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { Form } from './Form'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-      staleTime: Infinity,
-    },
-  },
-})
+import { queryClient } from './query'
 
 export function App() {
   return (

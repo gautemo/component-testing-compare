@@ -1,13 +1,20 @@
+import { queryClient } from './query'
+
 export function validateCustomer(values: { ssn: string; phonenumber: string; email: string }) {
   return (
     validateSsn(values.ssn).success &&
     validatePhonenumber(values.phonenumber) &&
-    validateEmail(values.email)
+    validateEmail(values.email) &&
+    !!queryClient.getQueryData(['customer', values.ssn])
   )
 }
 
-export function validateVehicle(values: { reg: string; mileage: number | null }) {
-  return validateRegistrationNumber(values.reg).success && validateMileage(values.mileage).success
+export function validateVehicle(values: { registrationNumber: string; mileage: number | null }) {
+  return (
+    validateRegistrationNumber(values.registrationNumber).success &&
+    validateMileage(values.mileage).success &&
+    !!queryClient.getQueryData(['vehicle', values.registrationNumber])
+  )
 }
 
 export function validateRegistrationNumber(value: string) {
