@@ -1,6 +1,5 @@
-import { useEffect } from 'react'
 import { useBuyInsurance } from './hooks/useBuyInsurance'
-import { Alert, Button, Spin } from 'antd'
+import { Alert, Button } from 'antd'
 import { useStoreSnap } from './formState'
 import { useCustomerQuery } from './hooks/useCustomerQuery'
 import { CarTwoTone, SafetyOutlined } from '@ant-design/icons'
