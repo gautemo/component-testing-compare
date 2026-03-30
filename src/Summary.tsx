@@ -1,18 +1,16 @@
 import { useEffect } from 'react'
 import { useBuyInsurance } from './hooks/useBuyInsurance'
-import { Alert, Spin } from 'antd'
+import { Alert, Button, Spin } from 'antd'
 import { useStoreSnap } from './formState'
 import { useCustomerQuery } from './hooks/useCustomerQuery'
 import { CarTwoTone, SafetyOutlined } from '@ant-design/icons'
 import { useVehicleQuery } from './hooks/useVehicleQuery'
 import { useCoveragesQuery } from './hooks/useCoveragesQuery'
+import { Confetti } from '@neoconfetti/react'
 
 export function Summary() {
   const snap = useStoreSnap()
   const buyMutation = useBuyInsurance()
-  useEffect(() => {
-    buyMutation.mutate()
-  }, [])
 
   const customerQuery = useCustomerQuery(snap.customer.ssn.value, true)
   const vehicleQuery = useVehicleQuery(snap.vehicle.registrationNumber.value, true)
@@ -28,15 +26,9 @@ export function Summary() {
     throw new Error('invalid state')
   }
 
-  if (buyMutation.isPending) {
-    return <Spin description="Buying a fantastic insurance" />
-  }
-  if (buyMutation.isError) {
-    return <Alert type="error" title="Failed to buy insurance" />
-  }
   return (
     <div className="summary">
-      <h2>Thank you for the purchase</h2>
+      <h2>Summary</h2>
       <h3>Customer</h3>
       <div className="card">
         <img
@@ -82,6 +74,25 @@ export function Summary() {
           <dd>{coverage.price} kr/mnd</dd>
         </dl>
       </div>
+      <Button
+        type="primary"
+        onClick={() => buyMutation.mutate()}
+        loading={buyMutation.isPending}
+        disabled={buyMutation.isSuccess}
+      >
+        Buy
+      </Button>
+      {buyMutation.isError && <Alert type="error" title="Failed to buy insurance" />}
+      {buyMutation.isSuccess && (
+        <>
+          <Alert title="Thank you for the purchase!" type="success" showIcon />
+          <div className="confetti">
+            <Confetti />
+            <Confetti duration={5000} particleShape="mix" />
+            <Confetti duration={3000} />
+          </div>
+        </>
+      )}
     </div>
   )
 }

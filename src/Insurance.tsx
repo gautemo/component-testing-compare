@@ -10,7 +10,7 @@ export function Insurance() {
       <InsuranceYearlyDrivingLength />
       <InsuranceCoverage />
       <Button type="primary" onClick={nextStep}>
-        Buy
+        Next
       </Button>
     </fieldset>
   )
