@@ -6,8 +6,10 @@ import { AppProvider } from '../AppProvider'
 
 test('should display name of customer', async () => {
   commands.mockResponse('http://localhost:3000/customer/*', {
-    name: 'Donald Duck',
-    age: 25,
+    json: {
+      name: 'Donald Duck',
+      age: 25,
+    },
   })
   const screen = await render(
     <AppProvider>
@@ -18,4 +20,17 @@ test('should display name of customer', async () => {
   const customerCard = screen.getByTestId('customer-card')
   await expect.element(customerCard).toHaveTextContent('Donald Duck')
   await expect.element(customerCard).toHaveTextContent('25')
+})
+
+test('should display not found customer', async () => {
+  commands.mockResponse('http://localhost:3000/customer/*', {
+    status: 404,
+  })
+  const screen = await render(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await userEvent.type(screen.getByRole('searchbox'), '11111111111{enter}')
+  await expect.element(screen.getByRole('alert')).toHaveTextContent('Could not find customer')
 })

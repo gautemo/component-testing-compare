@@ -3,14 +3,14 @@ import { playwright } from '@vitest/browser-playwright'
 import react from '@vitejs/plugin-react'
 import type { BrowserCommand } from 'vitest/node'
 
-const mockResponse: BrowserCommand<[path: string, json: unknown]> = async (
+const mockResponse: BrowserCommand<[path: string, { status?: number; json?: unknown }]> = async (
   { page, provider },
   path,
-  json,
+  options,
 ) => {
   if (provider.name === 'playwright') {
     await page.route(path, async (route) => {
-      await route.fulfill({ json })
+      await route.fulfill({ json: options.json, status: options.status })
     })
     return
   }
@@ -21,6 +21,7 @@ const mockResponse: BrowserCommand<[path: string, json: unknown]> = async (
 export default defineConfig({
   plugins: [react()],
   test: {
+    setupFiles: ['vitestSetup.ts'],
     browser: {
       enabled: true,
       provider: playwright({
