@@ -1,9 +1,10 @@
 import { Button } from 'antd'
 import { InsuranceCoverage } from './fields/InsuranceCoverage'
 import { InsuranceYearlyDrivingLength } from './fields/InsuranceYearlyDrivingLength'
-import { nextStep } from './formState'
+import { useStore } from './AppProvider'
 
 export function Insurance() {
+  const { nextStep } = useStore()
   return (
     <fieldset>
       <legend>Insurance</legend>

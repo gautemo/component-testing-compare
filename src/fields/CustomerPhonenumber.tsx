@@ -1,10 +1,11 @@
 import { PhoneOutlined } from '@ant-design/icons'
 import { Alert, InputNumber } from 'antd'
-import { setCustomerPhonenumber, useStoreSnap } from '../formState'
 import { validatePhonenumber } from '../formValidation'
+import { useStore } from '../AppProvider'
 
 export function CustomerPhonenumber() {
-  const snap = useStoreSnap()
+  const { useSnap, setCustomerPhonenumber } = useStore()
+  const snap = useSnap()
   const validation = validatePhonenumber(snap.customer.phonenumber.value)
   return (
     <div>

@@ -1,10 +1,11 @@
 import { Alert, Card, Radio, Spin } from 'antd'
-import { setInsuranceCoverage, useStoreSnap } from '../formState'
 import { validateInsuranceCoverage } from '../formValidation'
 import { useCoveragesQuery } from '../hooks/useCoveragesQuery'
+import { useStore } from '../AppProvider'
 
 export function InsuranceCoverage() {
-  const snap = useStoreSnap()
+  const { useSnap, setInsuranceCoverage } = useStore()
+  const snap = useSnap()
   const validation = validateInsuranceCoverage(snap.insurance.coverageId)
   const query = useCoveragesQuery()
 

@@ -1,9 +1,10 @@
 import { Alert, InputNumber } from 'antd'
-import { setVehicleMileage, useStoreSnap } from '../formState'
 import { validateMileage } from '../formValidation'
+import { useStore } from '../AppProvider'
 
 export function VehicleMileage() {
-  const snap = useStoreSnap()
+  const { useSnap, setVehicleMileage } = useStore()
+  const snap = useSnap()
   const validation = validateMileage(snap.vehicle.mileage.value)
   return (
     <div>

@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
-import { useStoreSnap } from '../formState'
+import { useStore } from '../AppProvider'
 
 export function useBuyInsurance() {
-  const snap = useStoreSnap()
+  const snap = useStore().useSnap()
   const payload = {
     customer: {
       ssn: snap.customer.ssn.value,

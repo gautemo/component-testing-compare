@@ -1,14 +1,14 @@
 import { useBuyInsurance } from './hooks/useBuyInsurance'
 import { Alert, Button } from 'antd'
-import { useStoreSnap } from './formState'
 import { useCustomerQuery } from './hooks/useCustomerQuery'
 import { CarTwoTone, SafetyOutlined } from '@ant-design/icons'
 import { useVehicleQuery } from './hooks/useVehicleQuery'
 import { useCoveragesQuery } from './hooks/useCoveragesQuery'
 import { Confetti } from '@neoconfetti/react'
+import { useStore } from './AppProvider'
 
 export function Summary() {
-  const snap = useStoreSnap()
+  const snap = useStore().useSnap()
   const buyMutation = useBuyInsurance()
 
   const customerQuery = useCustomerQuery(snap.customer.ssn.value, true)

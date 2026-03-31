@@ -1,10 +1,11 @@
 import { MailOutlined } from '@ant-design/icons'
 import { Alert, Input } from 'antd'
-import { setCustomerEmail, useStoreSnap } from '../formState'
 import { validateEmail } from '../formValidation'
+import { useStore } from '../AppProvider'
 
 export function CustomerEmail() {
-  const snap = useStoreSnap()
+  const { useSnap, setCustomerEmail } = useStore()
+  const snap = useSnap()
   const validation = validateEmail(snap.customer.email.value)
   return (
     <div>

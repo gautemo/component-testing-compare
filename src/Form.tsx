@@ -3,11 +3,11 @@ import { Steps } from 'antd'
 import { Customer } from './Customer'
 import { Insurance } from './Insurance'
 import { Vehicle } from './Vehicle'
-import { useStoreSnap } from './formState'
 import { Summary } from './Summary'
+import { useStore } from './AppProvider'
 
 export function Form() {
-  const snap = useStoreSnap()
+  const snap = useStore().useSnap()
   return (
     <div className="container">
       <Steps

@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { useStoreSnap } from '../formState'
 import { hash } from 'ohash'
+import { useStore } from '../AppProvider'
 
 export function useCoveragesQuery() {
-  const snap = useStoreSnap()
+  const snap = useStore().useSnap()
   const payload = {
     customerSsn: snap.customer.ssn.value,
     vehicle: {

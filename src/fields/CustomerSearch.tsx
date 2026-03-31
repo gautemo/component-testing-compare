@@ -1,18 +1,14 @@
 import { UserOutlined } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
-import {
-  setCustomerEmail,
-  setCustomerPhonenumber,
-  setCustomerSsn,
-  useStoreSnap,
-} from '../formState'
 import { Alert, Spin } from 'antd'
 import { validateSsn } from '../formValidation'
 import { useCustomerQuery } from '../hooks/useCustomerQuery'
 import { useEffect } from 'react'
+import { useStore } from '../AppProvider'
 
 export function CustomerSearch() {
-  const snap = useStoreSnap()
+  const { useSnap, setCustomerSsn, setCustomerPhonenumber, setCustomerEmail } = useStore()
+  const snap = useSnap()
   const validation = validateSsn(snap.customer.ssn.value)
   const query = useCustomerQuery(snap.customer.ssn.value, validation.success)
 
@@ -41,7 +37,7 @@ export function CustomerSearch() {
       )}
       {query.isError && <Alert title="Could not find customer" type="warning" />}
       {query.isSuccess && (
-        <div className="card">
+        <div className="card" data-testid="customer-card">
           <img
             src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${snap.customer.ssn.value}`}
             alt="Avatar"

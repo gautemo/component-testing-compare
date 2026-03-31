@@ -1,12 +1,13 @@
 import { CarOutlined, CarTwoTone } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
-import { setVehicleRegistrationNumber, useStoreSnap } from '../formState'
 import { Alert, Spin } from 'antd'
 import { validateRegistrationNumber } from '../formValidation'
 import { useVehicleQuery } from '../hooks/useVehicleQuery'
+import { useStore } from '../AppProvider'
 
 export function VehicleSearch() {
-  const snap = useStoreSnap()
+  const { useSnap, setVehicleRegistrationNumber } = useStore()
+  const snap = useSnap()
   const validation = validateRegistrationNumber(snap.vehicle.registrationNumber.value)
   const query = useVehicleQuery(snap.vehicle.registrationNumber.value, validation.success)
 

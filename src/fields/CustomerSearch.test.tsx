@@ -1,0 +1,21 @@
+import { expect, test } from 'vitest'
+import { render } from 'vitest-browser-react'
+import { CustomerSearch } from './CustomerSearch'
+import { userEvent, commands } from 'vitest/browser'
+import { AppProvider } from '../AppProvider'
+
+test('should display name of customer', async () => {
+  commands.mockResponse('http://localhost:3000/customer/*', {
+    name: 'Donald Duck',
+    age: 25,
+  })
+  const screen = await render(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await userEvent.type(screen.getByRole('searchbox'), '11111111111{enter}')
+  const customerCard = screen.getByTestId('customer-card')
+  await expect.element(customerCard).toHaveTextContent('Donald Duck')
+  await expect.element(customerCard).toHaveTextContent('25')
+})

@@ -1,4 +1,4 @@
-import { queryClient } from './query'
+import { queryClient } from './AppProvider'
 
 export function validateCustomer(values: { ssn: string; phonenumber: string; email: string }) {
   return (
