@@ -12,7 +12,7 @@ export function VehicleSearch() {
   const query = useVehicleQuery(snap.vehicle.registrationNumber.value, validation.success)
 
   return (
-    <div>
+    <div data-testid="vehicle-search">
       <label>
         <span>Registration number</span>
         <Search onSearch={setVehicleRegistrationNumber} prefix={<CarOutlined />} />

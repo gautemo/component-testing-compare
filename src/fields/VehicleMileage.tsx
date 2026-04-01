@@ -7,7 +7,7 @@ export function VehicleMileage() {
   const snap = useSnap()
   const validation = validateMileage(snap.vehicle.mileage.value)
   return (
-    <div>
+    <div data-testid="mileage">
       <label>
         <span>Mileage</span>
         <InputNumber

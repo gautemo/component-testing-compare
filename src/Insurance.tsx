@@ -4,13 +4,13 @@ import { InsuranceYearlyDrivingLength } from './fields/InsuranceYearlyDrivingLen
 import { useStore } from './AppProvider'
 
 export function Insurance() {
-  const { nextStep } = useStore()
+  const { completeStep } = useStore()
   return (
-    <fieldset>
+    <fieldset data-testid="insurance-step">
       <legend>Insurance</legend>
       <InsuranceYearlyDrivingLength />
       <InsuranceCoverage />
-      <Button type="primary" onClick={nextStep}>
+      <Button type="primary" onClick={() => completeStep('insurance')}>
         Next
       </Button>
     </fieldset>

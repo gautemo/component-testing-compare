@@ -24,7 +24,7 @@ export function CustomerSearch() {
   }, [query.isSuccess])
 
   return (
-    <div>
+    <div data-testid="customer-search">
       <label>
         <span>Social security number</span>
         <Search onSearch={setCustomerSsn} prefix={<UserOutlined />} />

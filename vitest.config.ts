@@ -9,9 +9,13 @@ const mockResponse: BrowserCommand<[path: string, { status?: number; json?: unkn
   options,
 ) => {
   if (provider.name === 'playwright') {
-    await page.route(path, async (route) => {
-      await route.fulfill({ json: options.json, status: options.status })
-    })
+    await page.route(
+      path,
+      async (route) => {
+        await route.fulfill({ json: options.json, status: options.status })
+      },
+      { times: 1 },
+    )
     return
   }
 

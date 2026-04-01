@@ -5,14 +5,14 @@ import { CustomerPhonenumber } from './fields/CustomerPhonenumber'
 import { useStore } from './AppProvider'
 
 export function Customer() {
-  const { nextStep } = useStore()
+  const { completeStep } = useStore()
   return (
-    <fieldset>
+    <fieldset data-testid="customer-step">
       <legend>Customer</legend>
       <CustomerSearch />
       <CustomerPhonenumber />
       <CustomerEmail />
-      <Button type="primary" onClick={nextStep}>
+      <Button type="primary" onClick={() => completeStep('customer')}>
         Next
       </Button>
     </fieldset>

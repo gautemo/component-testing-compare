@@ -4,13 +4,13 @@ import { VehicleMileage } from './fields/VehicleMileage'
 import { useStore } from './AppProvider'
 
 export function Vehicle() {
-  const { nextStep } = useStore()
+  const { completeStep } = useStore()
   return (
-    <fieldset>
+    <fieldset data-testid="vehicle-step">
       <legend>Vehicle</legend>
       <VehicleSearch />
       <VehicleMileage />
-      <Button type="primary" onClick={nextStep}>
+      <Button type="primary" onClick={() => completeStep('vehicle')}>
         Next
       </Button>
     </fieldset>

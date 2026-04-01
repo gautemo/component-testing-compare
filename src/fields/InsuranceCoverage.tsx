@@ -43,7 +43,12 @@ export function InsuranceCoverage() {
         </Radio.Group>
       )}
       {snap.insurance.displayValidation && !validation.success && (
-        <Alert title={validation.errorMessage} type="warning" showIcon />
+        <Alert
+          title={validation.errorMessage}
+          type="warning"
+          showIcon
+          data-testid="coverage-validation-error"
+        />
       )}
     </div>
   )

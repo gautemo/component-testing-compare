@@ -8,7 +8,7 @@ export function CustomerEmail() {
   const snap = useSnap()
   const validation = validateEmail(snap.customer.email.value)
   return (
-    <div>
+    <div data-testid="email">
       <label>
         <span>Email</span>
         <Input

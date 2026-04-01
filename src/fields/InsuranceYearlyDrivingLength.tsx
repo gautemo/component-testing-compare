@@ -22,7 +22,12 @@ export function InsuranceYearlyDrivingLength() {
         />
       </label>
       {snap.insurance.displayValidation && !validation.success && (
-        <Alert title={validation.errorMessage} type="warning" showIcon />
+        <Alert
+          title={validation.errorMessage}
+          type="warning"
+          showIcon
+          data-testid="yearly-driving-length-validation-error"
+        />
       )}
     </div>
   )

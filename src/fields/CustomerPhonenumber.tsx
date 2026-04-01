@@ -8,7 +8,7 @@ export function CustomerPhonenumber() {
   const snap = useSnap()
   const validation = validatePhonenumber(snap.customer.phonenumber.value)
   return (
-    <div>
+    <div data-testid="phonenumber">
       <label>
         <span>Phone number</span>
         <InputNumber

@@ -89,9 +89,9 @@ export function useStore() {
     setInsuranceCoverage(id: string) {
       store.insurance.coverageId = id
     },
-    nextStep() {
+    completeStep(step: 'customer' | 'vehicle' | 'insurance') {
       if (
-        store.step === 0 &&
+        step === 'customer' &&
         !validateCustomer({
           ssn: store.customer.ssn.value,
           email: store.customer.email.value,
@@ -104,7 +104,7 @@ export function useStore() {
         return
       }
       if (
-        store.step === 1 &&
+        step === 'vehicle' &&
         !validateVehicle({
           registrationNumber: store.vehicle.registrationNumber.value,
           mileage: store.vehicle.mileage.value,
@@ -115,7 +115,7 @@ export function useStore() {
         return
       }
       if (
-        store.step === 2 &&
+        step === 'insurance' &&
         !validateInsurance({
           mileage: store.insurance.yearlyDrivingLength,
           coverageId: store.insurance.coverageId,

@@ -10,7 +10,7 @@ const app = new H3({
 })
 
 app.get('/customer/:ssn', async () => {
-  await sleep(1_000)
+  await sleep(500)
   return {
     name: 'Alex Good',
     age: 30,
@@ -20,7 +20,7 @@ app.get('/customer/:ssn', async () => {
 })
 
 app.get('/vehicle/:registrationNumber', async () => {
-  await sleep(1_000)
+  await sleep(500)
   return {
     description: 'Skoda Enyaq 85X',
     year: 2024,
@@ -28,7 +28,7 @@ app.get('/vehicle/:registrationNumber', async () => {
 })
 
 app.post('/coverages', async () => {
-  await sleep(2_000)
+  await sleep(1_000)
   return [
     {
       id: 'kasko-pluss',
@@ -62,7 +62,7 @@ app.post('/coverages', async () => {
 })
 
 app.post('/insurance', async () => {
-  await sleep(2_000)
+  await sleep(1_000)
   return true
 })
 
