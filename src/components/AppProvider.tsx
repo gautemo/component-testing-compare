@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createContext, useContext, useRef, type ReactElement } from 'react'
 import { proxy, useSnapshot } from 'valtio'
 import { validateCustomer, validateInsurance, validateVehicle } from '../formValidation'
-import './index.css'
+import '../index.css'
 
 export const queryClient = new QueryClient({
   defaultOptions: {

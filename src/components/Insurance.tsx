@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import { InsuranceCoverage } from './fields/InsuranceCoverage'
+import { InsuranceCoverages } from './fields/InsuranceCoverages'
 import { InsuranceYearlyDrivingLength } from './fields/InsuranceYearlyDrivingLength'
 import { useStore } from './AppProvider'
 
@@ -9,7 +9,7 @@ export function Insurance() {
     <fieldset data-testid="insurance-step">
       <legend>Insurance</legend>
       <InsuranceYearlyDrivingLength />
-      <InsuranceCoverage />
+      <InsuranceCoverages />
       <Button type="primary" onClick={() => completeStep('insurance')}>
         Next
       </Button>

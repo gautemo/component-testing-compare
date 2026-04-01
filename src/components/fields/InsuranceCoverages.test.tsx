@@ -1,12 +1,12 @@
 import { expect, test } from 'vitest'
 import { AppProvider } from '../AppProvider'
 import { render } from 'vitest-browser-react'
-import { InsuranceCoverage } from './InsuranceCoverage'
+import { InsuranceCoverages } from './InsuranceCoverages'
 
 test('should display require yearly driving length', async () => {
   const screen = await render(
     <AppProvider>
-      <InsuranceCoverage />
+      <InsuranceCoverages />
     </AppProvider>,
   )
   expect(screen.getByRole('alert')).toHaveTextContent(

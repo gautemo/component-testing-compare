@@ -1,9 +1,10 @@
-import { Alert, Card, Radio, Spin } from 'antd'
+import { Alert, Radio, Spin } from 'antd'
 import { validateInsuranceCoverage } from '../../formValidation'
 import { useCoveragesQuery } from '../../hooks/useCoveragesQuery'
 import { useStore } from '../AppProvider'
+import { Coverage } from './Coverage'
 
-export function InsuranceCoverage() {
+export function InsuranceCoverages() {
   const { useSnap, setInsuranceCoverage } = useStore()
   const snap = useSnap()
   const validation = validateInsuranceCoverage(snap.insurance.coverageId)
@@ -23,22 +24,13 @@ export function InsuranceCoverage() {
           style={{ display: 'flex', flexDirection: 'column', gap: 4 }}
         >
           {query.data.map((coverage) => (
-            <Card
-              key={coverage.id}
-              size="small"
-              style={{
-                cursor: 'pointer',
-                borderColor: snap.insurance.coverageId === coverage.id ? '#1677ff' : undefined,
-              }}
-            >
-              <Radio value={coverage.id} style={{ flexDirection: 'row' }} className="coverage-card">
-                <div className="coverage-label">
-                  <strong>{coverage.name}</strong>
-                  <span>{coverage.price} kr/mnd</span>
-                  <p>{coverage.description}</p>
-                </div>
-              </Radio>
-            </Card>
+            <Coverage
+              id={coverage.id}
+              name={coverage.name}
+              description={coverage.description}
+              price={coverage.price}
+              blocked={coverage.blocked}
+            />
           ))}
         </Radio.Group>
       )}
