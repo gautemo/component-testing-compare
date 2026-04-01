@@ -4,7 +4,7 @@ import { CustomerSearch } from './CustomerSearch'
 import { userEvent, commands } from 'vitest/browser'
 import { AppProvider } from '../AppProvider'
 
-test('should display name of customer', async () => {
+test('should display customer data', async () => {
   commands.mockResponse('http://localhost:3000/customer/*', {
     json: {
       name: 'Donald Duck',
@@ -33,4 +33,26 @@ test('should display not found customer', async () => {
   )
   await userEvent.type(screen.getByRole('searchbox'), '11111111111{enter}')
   await expect.element(screen.getByRole('alert')).toHaveTextContent('Could not find customer')
+})
+
+test('should display required alert if empty search', async () => {
+  const screen = await render(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await expect.element(screen.getByRole('alert')).not.toBeInTheDocument()
+  await userEvent.type(screen.getByRole('searchbox'), '{enter}')
+  await expect.element(screen.getByRole('alert')).toHaveTextContent('Required')
+})
+
+test('should display invalid alert after blur if invalid ssn', async () => {
+  const screen = await render(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await expect.element(screen.getByRole('alert')).not.toBeInTheDocument()
+  await userEvent.type(screen.getByRole('searchbox'), '123456789{enter}')
+  await expect.element(screen.getByRole('alert')).toHaveTextContent('Invalid format')
 })

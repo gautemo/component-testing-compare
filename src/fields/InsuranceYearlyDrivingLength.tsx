@@ -8,7 +8,7 @@ const mileageOptions = [5000, 8000, 10000, 12000, 14000, 18000, 25000].map((km) 
 }))
 
 export function InsuranceYearlyDrivingLength() {
-  const { useSnap, setInsuranceMileage } = useStore()
+  const { useSnap, setYearlyDrivingLength: setInsuranceMileage } = useStore()
   const snap = useSnap()
   const validation = validateYearlyDrivingLength(snap.insurance.yearlyDrivingLength)
   return (

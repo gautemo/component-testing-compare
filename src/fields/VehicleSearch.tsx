@@ -25,7 +25,7 @@ export function VehicleSearch() {
       )}
       {query.isError && <Alert title="Could not find vehicle" type="warning" />}
       {query.isSuccess && (
-        <div className="card">
+        <div className="card" data-testid="vehicle-card">
           <CarTwoTone style={{ fontSize: 48 }} />
           <dl>
             <dt>Car:</dt>
