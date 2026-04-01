@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import { useStore } from '../AppProvider'
+import { useStore } from '../components/AppProvider'
 
 export function useBuyInsurance() {
   const snap = useStore().useSnap()

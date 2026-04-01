@@ -1,6 +1,6 @@
 import { Alert, Card, Radio, Spin } from 'antd'
-import { validateInsuranceCoverage } from '../formValidation'
-import { useCoveragesQuery } from '../hooks/useCoveragesQuery'
+import { validateInsuranceCoverage } from '../../formValidation'
+import { useCoveragesQuery } from '../../hooks/useCoveragesQuery'
 import { useStore } from '../AppProvider'
 
 export function InsuranceCoverage() {

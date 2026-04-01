@@ -1,8 +1,8 @@
 import { CarOutlined, CarTwoTone } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
 import { Alert, Spin } from 'antd'
-import { validateRegistrationNumber } from '../formValidation'
-import { useVehicleQuery } from '../hooks/useVehicleQuery'
+import { validateRegistrationNumber } from '../../formValidation'
+import { useVehicleQuery } from '../../hooks/useVehicleQuery'
 import { useStore } from '../AppProvider'
 
 export function VehicleSearch() {

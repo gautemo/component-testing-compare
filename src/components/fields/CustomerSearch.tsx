@@ -1,8 +1,8 @@
 import { UserOutlined } from '@ant-design/icons'
 import Search from 'antd/es/input/Search'
 import { Alert, Spin } from 'antd'
-import { validateSsn } from '../formValidation'
-import { useCustomerQuery } from '../hooks/useCustomerQuery'
+import { validateSsn } from '../../formValidation'
+import { useCustomerQuery } from '../../hooks/useCustomerQuery'
 import { useEffect } from 'react'
 import { useStore } from '../AppProvider'
 

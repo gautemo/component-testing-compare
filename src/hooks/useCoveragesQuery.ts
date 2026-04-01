@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { hash } from 'ohash'
-import { useStore } from '../AppProvider'
+import { useStore } from '../components/AppProvider'
 
 export function useCoveragesQuery() {
   const snap = useStore().useSnap()

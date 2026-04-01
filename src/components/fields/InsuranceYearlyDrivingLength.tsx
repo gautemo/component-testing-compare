@@ -1,5 +1,5 @@
 import { Alert, Select } from 'antd'
-import { validateYearlyDrivingLength } from '../formValidation'
+import { validateYearlyDrivingLength } from '../../formValidation'
 import { useStore } from '../AppProvider'
 
 const mileageOptions = [5000, 8000, 10000, 12000, 14000, 18000, 25000].map((km) => ({

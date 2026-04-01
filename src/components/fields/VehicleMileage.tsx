@@ -1,5 +1,5 @@
 import { Alert, InputNumber } from 'antd'
-import { validateMileage } from '../formValidation'
+import { validateMileage } from '../../formValidation'
 import { useStore } from '../AppProvider'
 
 export function VehicleMileage() {

@@ -1,5 +1,5 @@
 import { afterEach } from 'vitest'
-import { queryClient } from './src/AppProvider'
+import { queryClient } from './src/components/AppProvider'
 
 afterEach(() => {
   queryClient.clear()

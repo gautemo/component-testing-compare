@@ -1,6 +1,6 @@
 import { PhoneOutlined } from '@ant-design/icons'
 import { Alert, InputNumber } from 'antd'
-import { validatePhonenumber } from '../formValidation'
+import { validatePhonenumber } from '../../formValidation'
 import { useStore } from '../AppProvider'
 
 export function CustomerPhonenumber() {

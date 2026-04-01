@@ -1,7 +1,6 @@
 import { expect, test } from 'vitest'
 import { AppProvider } from '../AppProvider'
 import { render } from 'vitest-browser-react'
-import { userEvent } from 'vitest/browser'
 import { InsuranceCoverage } from './InsuranceCoverage'
 
 test('should display require yearly driving length', async () => {

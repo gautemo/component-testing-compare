@@ -1,6 +1,6 @@
 import { MailOutlined } from '@ant-design/icons'
 import { Alert, Input } from 'antd'
-import { validateEmail } from '../formValidation'
+import { validateEmail } from '../../formValidation'
 import { useStore } from '../AppProvider'
 
 export function CustomerEmail() {

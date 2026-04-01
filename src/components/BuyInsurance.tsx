@@ -1,6 +1,6 @@
 import { Confetti } from '@neoconfetti/react'
 import { Alert, Button } from 'antd'
-import { useBuyInsurance } from './hooks/useBuyInsurance'
+import { useBuyInsurance } from '../hooks/useBuyInsurance'
 
 export function BuyInsurance() {
   const buyMutation = useBuyInsurance()

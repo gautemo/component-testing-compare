@@ -1,7 +1,7 @@
-import { useCustomerQuery } from './hooks/useCustomerQuery'
+import { useCustomerQuery } from '../hooks/useCustomerQuery'
 import { CarTwoTone, SafetyOutlined } from '@ant-design/icons'
-import { useVehicleQuery } from './hooks/useVehicleQuery'
-import { useCoveragesQuery } from './hooks/useCoveragesQuery'
+import { useVehicleQuery } from '../hooks/useVehicleQuery'
+import { useCoveragesQuery } from '../hooks/useCoveragesQuery'
 import { useStore } from './AppProvider'
 import { BuyInsurance } from './BuyInsurance'
 
