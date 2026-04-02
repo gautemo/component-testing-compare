@@ -15,6 +15,8 @@ jobs:
           version: 10
       - name: pnpm install
         run: pnpm install
+      - name: install playwright chromium
+        run: pnpm exec playwright install chromium
       - name: Vitest component testing
         run: pnpm run vitest:run
   Playwright:
@@ -30,6 +32,8 @@ jobs:
           version: 10
       - name: pnpm install
         run: pnpm install
+      - name: install playwright chromium
+        run: pnpm exec playwright install chromium
       - name: Playwright component testing
         run: pnpm run playwright:run
   Cypress:
