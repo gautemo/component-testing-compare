@@ -1,0 +1,40 @@
+name: Component tests
+on:
+  workflow_dispatch:
+jobs:
+  Vitest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
+      - name: pnpm install
+        run: pnpm install
+      - name: Vitest component testing
+        run: pnpm run vitest:run
+  Playwright:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
+      - name: pnpm install
+        run: pnpm install
+      - name: Vitest component testing
+        run: pnpm run playwright:run
+  Cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          version: 10
+      - name: pnpm install
+        run: pnpm install
+      - name: Vitest component testing
+        run: pnpm run cypress:run

@@ -8,12 +8,12 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "fmt": "oxfmt",
-    "vitest": "vitest",
+    "vitest:ui": "vitest",
     "vitest:run": "run-await-run 'node server/main.ts' :3000 'vitest run'",
-    "playwright": "playwright test --ui",
-    "playwright:run": "playwright test",
-    "cypress": "cypress open",
-    "cypress:run": "cypress run --component"
+    "playwright:ui": "playwright test --ui",
+    "playwright:run": "run-await-run 'node server/main.ts' :3000 'playwright test'",
+    "cypress:ui": "cypress open",
+    "cypress:run": "run-await-run 'node server/main.ts' :3000 'cypress run --component'"
   },
   "dependencies": {
     "@ant-design/icons": "~6.1.0",
