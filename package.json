@@ -12,7 +12,8 @@
     "test": "vitest",
     "playwright": "playwright test --ui",
     "playwright:run": "playwright test",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress:run": "cypress run --component"
   },
   "dependencies": {
     "@ant-design/icons": "~6.1.0",

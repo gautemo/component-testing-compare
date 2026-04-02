@@ -13,10 +13,10 @@ function stripLegacyCypressOptimizeDepsPlugin(): Plugin {
 }
 
 // dependencies that need to be the same instance between support file and test
-const CYPRESS_DEDUPE_DEPS = ['react', 'react-dom', 'react-redux']
+const CYPRESS_DEDUPE_DEPS = ['react', 'react-dom']
 
 // whatever triggers rebuilds due to the new optimized dependencies found
-const CYPRESS_PREBUNDLE_DEPS = []
+const CYPRESS_PREBUNDLE_DEPS = ['@tanstack/react-query', 'antd', 'cypress/react', 'valtio']
 
 export default defineConfig({
   plugins: [react(), stripLegacyCypressOptimizeDepsPlugin()],
@@ -24,6 +24,6 @@ export default defineConfig({
     dedupe: CYPRESS_DEDUPE_DEPS,
   },
   optimizeDeps: {
-    // include: CYPRESS_PREBUNDLE_DEPS
+    include: CYPRESS_PREBUNDLE_DEPS,
   },
 })
