@@ -4,5 +4,5 @@
   },
   "extends": "./tsconfig.app.json",
   "exclude": [],
-  "include": ["src/**/*.test.tsx", "vitestSetup.ts"]
+  "include": ["src/**/*.vitest.tsx", "vitestSetup.ts"]
 }

@@ -26,7 +26,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     setupFiles: ['vitestSetup.ts'],
-    include: ['**\/*.test.tsx'],
+    include: ['**\/*.vitest.tsx'],
     browser: {
       enabled: true,
       provider: playwright({
