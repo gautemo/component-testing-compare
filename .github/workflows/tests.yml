@@ -5,6 +5,9 @@ jobs:
   Vitest:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
       - uses: actions/checkout@v6
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -17,6 +20,9 @@ jobs:
   Playwright:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
       - uses: actions/checkout@v6
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -24,11 +30,14 @@ jobs:
           version: 10
       - name: pnpm install
         run: pnpm install
-      - name: Vitest component testing
+      - name: Playwright component testing
         run: pnpm run playwright:run
   Cypress:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
       - uses: actions/checkout@v6
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -36,5 +45,5 @@ jobs:
           version: 10
       - name: pnpm install
         run: pnpm install
-      - name: Vitest component testing
+      - name: Cypress component testing
         run: pnpm run cypress:run
