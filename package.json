@@ -10,7 +10,8 @@
     "fmt": "oxfmt",
     "test:run": "run-await-run 'node server/main.ts' :3000 'vitest run'",
     "test": "vitest",
-    "test-ct": "playwright test -c playwright-ct.config.ts --ui"
+    "test-ct": "playwright test -c playwright-ct.config.ts --ui",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@ant-design/icons": "~6.1.0",
@@ -30,6 +31,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.1",
     "@vitest/browser-playwright": "^4.1.2",
+    "cypress": "^15.13.0",
     "oxfmt": "^0.41.0",
     "run-await-run": "^1.0.1",
     "typescript": "5.9.3",

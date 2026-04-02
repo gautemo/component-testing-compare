@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.cypress.tsbuildinfo"
+  },
+  "extends": "./tsconfig.app.json",
+  "exclude": [],
+  "include": ["src/**/*.cy.tsx", "cypress.config.ts", "cypress"]
+}

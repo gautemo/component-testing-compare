@@ -1,7 +1,29 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+function stripLegacyCypressOptimizeDepsPlugin(): Plugin {
+  return {
+    name: 'cypress-vite8-compat',
+    config(config) {
+      if (config?.optimizeDeps?.esbuildOptions) {
+        delete config.optimizeDeps.esbuildOptions
+      }
+    },
+  }
+}
+
+// dependencies that need to be the same instance between support file and test
+const CYPRESS_DEDUPE_DEPS = ['react', 'react-dom', 'react-redux']
+
+// whatever triggers rebuilds due to the new optimized dependencies found
+const CYPRESS_PREBUNDLE_DEPS = []
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), stripLegacyCypressOptimizeDepsPlugin()],
+  resolve: {
+    dedupe: CYPRESS_DEDUPE_DEPS,
+  },
+  optimizeDeps: {
+    // include: CYPRESS_PREBUNDLE_DEPS
+  },
 })
