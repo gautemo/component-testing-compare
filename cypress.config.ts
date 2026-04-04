@@ -23,7 +23,13 @@ const CYPRESS_PREBUNDLE_DEPS = [
   'cypress/react',
   'valtio',
   '@ant-design/icons',
+  'ohash',
+  'antd/es/input/Search',
 ]
+
+/*
+    "@neoconfetti/react": "^1.0.0",
+*/
 
 export default defineConfig({
   allowCypressEnv: false,
