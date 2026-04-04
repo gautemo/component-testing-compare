@@ -17,11 +17,17 @@ function stripLegacyCypressOptimizeDepsPlugin(): Plugin {
 const CYPRESS_DEDUPE_DEPS = ['react', 'react-dom']
 
 // whatever triggers rebuilds due to the new optimized dependencies found
-const CYPRESS_PREBUNDLE_DEPS = ['@tanstack/react-query', 'antd', 'cypress/react', 'valtio']
+const CYPRESS_PREBUNDLE_DEPS = [
+  '@tanstack/react-query',
+  'antd',
+  'cypress/react',
+  'valtio',
+  '@ant-design/icons',
+]
 
 export default defineConfig({
   allowCypressEnv: false,
-
+  screenshotOnRunFailure: false,
   component: {
     devServer: {
       framework: 'react',
