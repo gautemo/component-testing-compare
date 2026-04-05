@@ -56,3 +56,13 @@ test('should display invalid alert after blur if invalid ssn', async () => {
   await userEvent.type(screen.getByRole('searchbox'), '123456789{enter}')
   await expect.element(screen.getByRole('alert')).toHaveTextContent('Invalid format')
 })
+
+test('should display pending message', async () => {
+  const screen = await render(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await userEvent.type(screen.getByRole('searchbox'), '11111111111{enter}')
+  await expect.element(screen.getByText('Finding customer data')).toBeVisible()
+})

@@ -46,3 +46,13 @@ test('should disable buy button after buy', async ({ mount, page }) => {
   await page.getByRole('button', { name: 'Buy' }).click()
   await expect(page.getByRole('button', { name: 'Buy' })).toBeDisabled()
 })
+
+test('should show pending button while buying', async ({ mount, page }) => {
+  await mount(
+    <AppProvider>
+      <BuyInsurance />
+    </AppProvider>,
+  )
+  await page.getByRole('button', { name: 'Buy' }).click()
+  await expect(page.getByRole('button', { name: 'Buy' }).getByLabel('loading')).toBeVisible()
+})

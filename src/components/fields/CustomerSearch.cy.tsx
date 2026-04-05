@@ -52,3 +52,13 @@ it('should display invalid alert after blur if invalid ssn', () => {
   cy.get('input[type="search"]').type('123456789{enter}')
   cy.get('[role=alert]').should('have.text', 'Invalid format')
 })
+
+it('should display pending message', () => {
+  cy.mount(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  cy.get('input[type="search"]').type('11111111111{enter}')
+  cy.contains('Finding customer data').should('be.visible')
+})

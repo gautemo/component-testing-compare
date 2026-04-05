@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "fmt": "oxfmt",
     "vitest:ui": "vitest",
-    "vitest:run": "run-await-run 'node server/main.ts' :3000 'vitest run'",
+    "vitest:run": "run-await-run 'node server/main.ts' :3000 'vitest run --browser.headless'",
     "playwright:ui": "playwright test --ui",
     "playwright:run": "run-await-run 'node server/main.ts' :3000 'playwright test'",
     "cypress:ui": "cypress open",

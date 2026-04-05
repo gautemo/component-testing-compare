@@ -44,3 +44,15 @@ test('should disable buy button after buy', async () => {
   await userEvent.click(screen.getByRole('button', { name: 'Buy' }))
   await expect.element(screen.getByRole('button', { name: 'Buy' })).toBeDisabled()
 })
+
+test('should show pending button while buying', async () => {
+  const screen = await render(
+    <AppProvider>
+      <BuyInsurance />
+    </AppProvider>,
+  )
+  await userEvent.click(screen.getByRole('button', { name: 'Buy' }))
+  await expect
+    .element(screen.getByRole('button', { name: 'Buy' }).getByLabelText('loading'))
+    .toBeVisible()
+})

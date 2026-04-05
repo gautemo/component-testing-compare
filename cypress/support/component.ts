@@ -1,6 +1,4 @@
 import { queryClient } from '../../src/components/AppProvider'
-import './commands'
-
 import { mount } from 'cypress/react'
 
 declare global {

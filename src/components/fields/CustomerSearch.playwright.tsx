@@ -61,3 +61,14 @@ test('should display invalid alert after blur if invalid ssn', async ({ mount })
   await component.getByRole('searchbox').press('Enter')
   await expect(component.getByRole('alert')).toHaveText('Invalid format')
 })
+
+test('should display pending message', async ({ mount }) => {
+  const component = await mount(
+    <AppProvider>
+      <CustomerSearch />
+    </AppProvider>,
+  )
+  await component.getByRole('searchbox').fill('11111111111')
+  await component.getByRole('searchbox').press('Enter')
+  await expect(component.getByText('Finding customer data')).toBeVisible()
+})

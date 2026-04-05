@@ -52,3 +52,13 @@ it('should display invalid alert after blur if invalid registration number', () 
   cy.get('input[type="search"]').type('123{enter}')
   cy.get('[role=alert]').should('have.text', 'Invalid format')
 })
+
+it('should display pending message', () => {
+  cy.mount(
+    <AppProvider>
+      <VehicleSearch />
+    </AppProvider>,
+  )
+  cy.get('input[type="search"]').type('AB1234{enter}')
+  cy.contains('Finding vehicle data').should('be.visible')
+})

@@ -63,3 +63,14 @@ test('should display invalid alert after blur if invalid registration number', a
   await component.getByRole('searchbox').press('Enter')
   await expect(component.getByRole('alert')).toHaveText('Invalid format')
 })
+
+test('should display pending message', async ({ mount }) => {
+  const component = await mount(
+    <AppProvider>
+      <VehicleSearch />
+    </AppProvider>,
+  )
+  await component.getByRole('searchbox').fill('AB1234')
+  await component.getByRole('searchbox').press('Enter')
+  await expect(component.getByText('Finding vehicle data')).toBeVisible()
+})

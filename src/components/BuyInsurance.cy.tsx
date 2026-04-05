@@ -43,3 +43,13 @@ it('should disable buy button after buy', () => {
   cy.get('button').click()
   cy.get('button').should('be.disabled')
 })
+
+it('should show pending button while buying', () => {
+  cy.mount(
+    <AppProvider>
+      <BuyInsurance />
+    </AppProvider>,
+  )
+  cy.get('button').click()
+  cy.get('button').get('[aria-label="loading"]').should('be.visible')
+})
