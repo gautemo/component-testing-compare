@@ -28,10 +28,6 @@ const CYPRESS_PREBUNDLE_DEPS = [
   '@neoconfetti/react',
 ]
 
-/*
-    "@neoconfetti/react": "^1.0.0",
-*/
-
 export default defineConfig({
   allowCypressEnv: false,
   screenshotOnRunFailure: false,
