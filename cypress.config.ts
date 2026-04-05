@@ -25,6 +25,7 @@ const CYPRESS_PREBUNDLE_DEPS = [
   '@ant-design/icons',
   'ohash',
   'antd/es/input/Search',
+  '@neoconfetti/react',
 ]
 
 /*
