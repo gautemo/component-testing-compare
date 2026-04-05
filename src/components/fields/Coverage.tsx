@@ -1,5 +1,6 @@
 import { Card, Radio } from 'antd'
 import { useStore } from '../AppProvider'
+import clsx from 'clsx'
 
 type Props = {
   id: string
@@ -15,10 +16,7 @@ export function Coverage(props: Props) {
   return (
     <Card
       size="small"
-      style={{
-        cursor: 'pointer',
-        borderColor: snap.insurance.coverageId === props.id ? '#1677ff' : undefined,
-      }}
+      className={clsx('coverage-card', { selected: snap.insurance.coverageId === props.id })}
     >
       <Radio
         value={props.id}

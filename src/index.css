@@ -140,3 +140,11 @@ h3 {
   inset: 0;
   pointer-events: none;
 }
+
+.coverage-card {
+  cursor: pointer;
+
+  &.selected {
+    border-color: #1677ff;
+  }
+}

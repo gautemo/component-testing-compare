@@ -26,6 +26,7 @@ const CYPRESS_PREBUNDLE_DEPS = [
   'ohash',
   'antd/es/input/Search',
   '@neoconfetti/react',
+  'clsx',
 ]
 
 export default defineConfig({
