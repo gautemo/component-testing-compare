@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createContext, useContext, useRef, type ReactElement } from 'react'
+import { createContext, useContext, useRef, type ReactNode } from 'react'
 import { proxy, useSnapshot } from 'valtio'
 import { validateCustomer, validateInsurance, validateVehicle } from '../formValidation'
 import '../index.css'
@@ -33,7 +33,7 @@ const initialStore = {
 
 const StoreContext = createContext<typeof initialStore | null>(null)
 
-export function AppProvider(props: { children: ReactElement }) {
+export function AppProvider(props: { children: ReactNode }) {
   const store = useRef(proxy(structuredClone(initialStore))).current
 
   return (
