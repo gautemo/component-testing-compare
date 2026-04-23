@@ -25,6 +25,7 @@ export function InsuranceCoverages() {
         >
           {query.data.map((coverage) => (
             <Coverage
+              key={coverage.id}
               id={coverage.id}
               name={coverage.name}
               description={coverage.description}
