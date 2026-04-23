@@ -5,7 +5,7 @@ Vitest, Cypress, and Playwright comparison for component testing.
 |                                                      | Vitest                                              | Playwright                              | Cypress                                  |
 | ---------------------------------------------------- | --------------------------------------------------- | --------------------------------------- | ---------------------------------------- |
 | Time to run 12 files with 35 tests on my machine     | 6.743s                                              | 10.387s                                 | 44.948s                                  |
-| Time to run 12 files with 35 tests in Github Actions | 9s                                                  | 25s                                     | 1m 3s                                    |
+| Time to run 12 files with 35 tests in Github Actions | 8s                                                  | 22s                                     | 1m 0s                                    |
 | Stable                                               | October 2025                                        | Experimental since May 2022             | August 2022                              |
 | Bundler                                              | Vite                                                | Vite \*                                 | Vite, Webpack                            |
 | Time travel                                          | ❌                                                  | ✅                                      | ✅                                       |
